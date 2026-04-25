@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unila App</title>
+
+<style>
+:root { --bg:#0f172a; --card:#1e293b; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial;background:#0f172a;color:white;}
+header{display:flex;padding:10px;background:#1e293b;}
+.home-top{flex:1;margin:0 10px;padding:12px;border:none;border-radius:10px;background:#22c55e;color:white;font-weight:bold;}
+
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;padding:16px;}
+button{padding:16px;border:none;border-radius:12px;font-weight:bold;color:white;}
+
+.unila{background:#2563eb;}
+.sigaa{background:#9333ea;}
+.gmail{background:#ea4335;}
+.google{background:#fbbc05;color:black;}
+.instagram{background:#d62976;}
+.facebook{background:#1877f2;}
+.biblioteca{background:#8b5cf6;}
+.intercampi{background:#0ea5e9;}
+.smartec{background:#06b6d4;}
+.editais{background:#0d9488;}
+.alertas{background:#f59e0b;color:black;}
+.emergencia{background:#dc2626;}
+.enderecos{background:#eab308;color:black;}
+.ru{background:#f97316;}
+.info{background:#1877f2;}
+.dev{background:#6366f1;}
+.notes{background:#14b8a6;}
+.share{background:#10b981;}
+.internet{background:#3b82f6;}
+.estude{background:#22c55e;}
+.update{background:#0ea5e9;}
+
+.page{display:none;padding:20px;line-height:1.6;}
+textarea{width:100%;height:120px;border-radius:10px;padding:10px;margin-bottom:10px;}
+</style>
+</head>
+
+<body>
+
+<header>
+<button onclick="goBack()">⬅</button>
+<button class="home-top" onclick="goHome()">🏠 Página Inicial</button>
+</header>
+
+<div id="home" class="menu">
+
+<button class="unila" onclick="openLink('https://portal.unila.edu.br/')">Portal da UNILA</button>
+<button class="sigaa" onclick="openLink('https://sig.unila.edu.br/sigaa/verTelaLogin.do')">SIGAA</button>
+<button class="gmail" onclick="openLink('https://mail.google.com/')">E-mail Institucional</button>
+<button class="google" onclick="openLink('https://www.google.com/')">Google</button>
+<button class="instagram" onclick="openLink('https://www.instagram.com/instaunila/')">Instagram Unila</button>
+<button class="facebook" onclick="openLink('https://www.facebook.com/unila.oficial')">UNILA Facebook</button>
+<button class="biblioteca" onclick="openLink('https://portal.unila.edu.br/biblioteca')">Biblioteca</button>
+<button class="intercampi" onclick="openLink('https://portal.unila.edu.br/proagi/delog/arquivos/horario-intercampi/quadro-de-horario-intercampi.pdf')">Intercampi</button>
+<button class="smartec" onclick="openLink('https://www.facebook.com/profile.php?id=61562436416014')">Smart Tech</button>
+<button class="editais" onclick="openLink('https://documentos.unila.edu.br/')">Portal de Editais</button>
+
+<button class="alertas" onclick="openPage('alertasPage')">🔔 Alertas</button>
+<button class="emergencia" onclick="openPage('emergenciaPage')">🚨 Emergência</button>
+<button class="enderecos" onclick="openPage('enderecosPage')">🏫 Campus da Unila</button>
+<button class="ru" onclick="openPage('ruPage')">🍽️ Restaurantes (RU)</button>
+<button class="info" onclick="openLink('https://facebook.com/groups/1469303078173697/')">Grupo no Facebook</button>
+<button class="dev" onclick="openPage('devPage')">Desenvolvedor</button>
+<button class="notes" onclick="openPage('notesPage')">📝 Anotações</button>
+<button class="share" onclick="shareApp()">📤 Compartilhar</button>
+<button class="internet" onclick="openPage('internetPage')">Configurar Internet</button>
+<button class="estude" onclick="openPage('estudPage')">Estude na UNILA</button>
+<button class="update" onclick="updateApp()">🔄 Atualizar App</button>
+
+</div>
+
+<!-- ALERTAS -->
+<div id="alertasPage" class="page">
+<h2>🔔 ALERTA IMPORTANTE</h2>
+<p>
+📢 <b>GREVE NA UNILA — Tempo indeterminado</b><br><br>
+
+Setores afetados:<br>
+• Bibliotecários<br>
+• T.I (Tecnologia da Informação)<br>
+• Servidores administrativos<br><br>
+
+Impactos:<br>
+• Atendimento reduzido<br>
+• Processos mais lentos<br>
+• Possível fechamento de setores<br><br>
+
+⚠ Evite serviços não urgentes.
+</p>
+</div>
+
+<!-- EMERGÊNCIA -->
+<div id="emergenciaPage" class="page">
+<h2>🚨 Telefones Úteis</h2>
+
+Polícia Militar: 190<br>
+SAMU Ambulância: 192<br>
+Bombeiros: 193<br>
+Hospital Municipal: (45) 2105-4100<br>
+Guarda Municipal: (45) 2105-5100<br><br>
+Delegacia da Mulher: (45) 3521-9200<br>
+Defesa Civil: 199<br>
+Polícia Federal: (45) 3522-1174<br>
+Polícia Rodoviária Federal: (45) 3576-1400<br>
+UPA João Samek: (45) 3522-8700<br>
+</div>
+
+<!-- CAMPUS -->
+<div id="enderecosPage" class="page">
+<h2>🏫 Campus da Unila</h2>
+
+<p>
+A Universidade Federal da Integração Latino-Americana (UNILA), em Foz do Iguaçu-PR, funciona em diversas unidades físicas.<br>
+Seu projeto mais emblemático é o <b>Campus Arandu</b>, desenhado por Oscar Niemeyer e atualmente em construção.<br><br>
+
+<b>📍 Campus Jardim Universitário (JU)</b><br>
+Avenida Tarquínio Joslin dos Santos, 1000 - Jardim Universitário<br>
+CEP 85870-650<br><br>
+
+<b>📍 Campus Integração</b><br>
+Avenida Tancredo Neves, 3147 - Bairro Itaipu B (antigo Porto Belo)<br>
+CEP 85867-000<br><br>
+
+<b>📍 Unidade Parque Tecnológico Itaipu (PTI)</b><br>
+Avenida Tancredo Neves, 6731 - dentro da Itaipu Binacional<br>
+CEP 85867-970<br><br>
+
+<b>📍 Unidade Edifício Rio Almada</b><br>
+Avenida Tancredo Neves, 3838 - Bairro Porto Belo<br>
+CEP 85867-633<br><br>
+
+<b>📍 Unidade Portal da Foz (Almoxarifado/Patrimônio)</b><br>
+Rua Macucos, 131, esquina com Rua Mineirão<br>
+Portal da Foz<br>
+CEP 85859-450<br><br>
+
+<b>📌 Campus Arandu (em construção)</b><br>
+Projeto arquitetônico de Oscar Niemeyer<br>
+Localizado na Hidroelétrica Itaipu Binacional<br>
+</p>
+</div>
+
+<!-- RU -->
+<div id="ruPage" class="page">
+<h2>🍽️ Restaurantes Universitários</h2>
+
+📍 Localizações:<br>
+• JU<br>
+• PTI<br><br>
+
+⏰ Horários:<br>
+Café: 06h45 – 08h00<br>
+Almoço: 11h00 – 13h00<br>
+Jantar: 17h30 – 19h30<br><br>
+
+💲 Preços:<br>
+• Estudantes: R$ 2,00<br>
+• Servidores: R$ 4,00<br>
+• Visitantes: R$ 15–20<br><br>
+
+💡 Outras informações:<br>
+• Opção vegetariana<br>
+• Cardápio no SIGAA<br>
+• Alimentação balanceada<br>
+• Prioridade a bolsistas<br>
+</div>
+
+<!-- INTERNET -->
+<div id="internetPage" class="page">
+<h2>🌐 Configurar Internet UNILA</h2>
+
+<b>Rede: UNILA / eduroam</b><br><br>
+
+<b>📱 Android</b><br>
+• Método EAP: PEAP<br>
+• Autenticação: MSCHAPV2<br>
+• Não validar certificado<br><br>
+
+<b>🍏 iPhone (iOS)</b><br>
+• Conexão automática via perfil<br><br>
+
+<b>💻 Windows</b><br>
+• WPA2-Enterprise<br><br>
+
+<b>🔐 VPN</b><br>
+Endereço: vpn.unila.edu.br<br><br>
+
+⚠ Outros dispositivos:<br>
+Fale com a secretaria ou com a equipe da T.I.
+</div>
+
+<!-- ESTUDE NA UNILA -->
+<div id="estudPage" class="page">
+<h2>🎓 Estude na UNILA</h2>
+
+<h3>📌 Formas de ingresso</h3>
+• SiSU (ENEM)<br>
+• Transferências<br>
+• Portador de Diploma<br>
+• Vagas Remanescentes<br><br>
+
+<h3>🌎 Ingresso Internacional</h3>
+• PSI – estrangeiros<br>
+• PSIN – indígenas<br>
+• PSRH – refugiados<br>
+• Mobilidade Acadêmica<br><br>
+
+<h3>📘 Cursos</h3>
+• 29 cursos presenciais<br>
+• Áreas: engenharia, saúde, direito, humanas, artes, integração latino-americana<br><br>
+
+<h3>🏛 Benefícios</h3>
+• Educação 100% pública<br>
+• RU barato<br>
+• Bolsas permanência<br>
+• Biblioteca moderna<br>
+• Laboratórios equipados<br>
+• Acompanhamento pedagógico<br><br>
+
+<h3>💡 Dicas para novos alunos</h3>
+• Aprenda o SIGAA<br>
+• Participe de projetos<br>
+• Leia editais<br>
+• Use o Intercampi<br>
+• Aproveite eventos e oficinas<br>
+</div>
+
+<!-- DEV -->
+<div id="devPage" class="page">
+<h2>👨‍💻 Desenvolvedor</h2>
+Telefone do Desenvolvedor: <b>(45) 99949-9759</b>
+</div>
+
+<!-- ANOTAÇÕES -->
+<div id="notesPage" class="page">
+<h2>📝 Anotações</h2>
+<textarea id="note"></textarea>
+<button onclick="saveNote()">Salvar</button>
+<div id="list"></div>
+</div>
+
+<script>
+let historyStack=[];
+
+function openLink(u){window.open(u);}
+function openPage(id){
+  historyStack.push(id);
+  document.getElementById("home").style.display="none";
+  document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+  document.getElementById(id).style.display="block";
+}
+function goBack(){
+  historyStack.pop();
+  if(historyStack.length===0){goHome();return;}
+  document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+  document.getElementById(historyStack[historyStack.length-1]).style.display="block";
+}
+function goHome(){
+  historyStack=[];
+  document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+  document.getElementById("home").style.display="grid";
+}
+
+function shareApp(){
+  window.open("https://wa.me/?text=Baixe o Unila App: https://kodular.app/YSZ-TLS");
+}
+
+function updateApp(){
+  alert("Para atualizar, acesse o link fixo de download do aplicativo.");
+}
+
+function saveNote(){
+  let t=document.getElementById("note").value;
+  let n=JSON.parse(localStorage.getItem("notes")||"[]");
+  n.push(t);
+  localStorage.setItem("notes",JSON.stringify(n));
+  renderNotes();
+}
+function renderNotes(){
+  let n=JSON.parse(localStorage.getItem("notes")||"[]");
+  let list=document.getElementById("list");
+  list.innerHTML="";
+  n.forEach((x,i)=>{
+    let d=document.createElement("div");
+    d.textContent=x;
+    let b=document.createElement("button");
+    b.textContent="Excluir";
+    b.onclick=()=>{n.splice(i,1);localStorage.setItem("notes",JSON.stringify(n));renderNotes();};
+    d.appendChild(document.createElement("br"));
+    d.appendChild(b);
+    list.appendChild(d);
+  });
+}
+renderNotes();
+</script>
+
+</body>
+</html>
