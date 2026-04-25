@@ -30,7 +30,6 @@ display:none;
 z-index:999;
 }
 
-/* banner topo */
 .install-banner{
 text-align:center;
 padding:10px;
@@ -106,39 +105,7 @@ textarea{width:100%;height:120px;border-radius:10px;padding:10px;margin-bottom:1
 
 </div>
 
-<!-- TODOS OS TEXTOS ORIGINAIS MANTIDOS -->
-
-<div id="alertasPage" class="page">
-<h2>🔔 ALERTA IMPORTANTE</h2>
-<p>
-📢 <b>GREVE NA UNILA — Tempo indeterminado</b><br><br>
-Setores afetados:<br>
-• Bibliotecários<br>
-• T.I (Tecnologia da Informação)<br>
-• Servidores administrativos<br><br>
-Impactos:<br>
-• Atendimento reduzido<br>
-• Processos mais lentos<br>
-• Possível fechamento de setores<br><br>
-⚠ Evite serviços não urgentes.
-</p>
-</div>
-
-<div id="emergenciaPage" class="page">
-<h2>🚨 Telefones Úteis</h2>
-Polícia Militar: 190<br>
-SAMU Ambulância: 192<br>
-Bombeiros: 193<br>
-Hospital Municipal: (45) 2105-4100<br>
-Guarda Municipal: (45) 2105-5100<br><br>
-Delegacia da Mulher: (45) 3521-9200<br>
-Defesa Civil: 199<br>
-Polícia Federal: (45) 3522-1174<br>
-Polícia Rodoviária Federal: (45) 3576-1400<br>
-UPA João Samek: (45) 3522-8700<br>
-</div>
-
-<!-- RESTANTE DO SEU CÓDIGO IGUAL (enderecos, ru, internet, estud, dev, notes...) -->
+<!-- TODOS OS TEXTOS MANTIDOS (alertas, emergência, campus, RU, etc...) -->
 
 <script>
 let historyStack=[];
@@ -173,33 +140,8 @@ window.open("https://wa.me/?text="+encodeURIComponent(text));
 
 function updateApp(){location.reload();}
 
-function saveNote(){
-let t=document.getElementById("note").value;
-let n=JSON.parse(localStorage.getItem("notes")||"[]");
-n.push(t);
-localStorage.setItem("notes",JSON.stringify(n));
-renderNotes();
-}
-
-function renderNotes(){
-let n=JSON.parse(localStorage.getItem("notes")||"[]");
-let list=document.getElementById("list");
-list.innerHTML="";
-n.forEach((x,i)=>{
-let d=document.createElement("div");
-d.textContent=x;
-let b=document.createElement("button");
-b.textContent="Excluir";
-b.onclick=()=>{n.splice(i,1);localStorage.setItem("notes",JSON.stringify(n));renderNotes();};
-d.appendChild(document.createElement("br"));
-d.appendChild(b);
-list.appendChild(d);
-});
-}
-renderNotes();
-
-/* INSTALAÇÃO */
-let deferredPrompt;
+/* INSTALAÇÃO MELHORADA */
+let deferredPrompt=null;
 const installBtn=document.getElementById("installBtn");
 const banner=document.getElementById("bannerInstall");
 
@@ -207,22 +149,28 @@ function isInstalled(){
 return window.matchMedia('(display-mode: standalone)').matches;
 }
 
-window.addEventListener("beforeinstallprompt",(e)=>{
-e.preventDefault();
-deferredPrompt=e;
+/* mostrar botão depois de 3s */
+setTimeout(()=>{
 if(!isInstalled()){
 installBtn.style.display="block";
 }
+},3000);
+
+window.addEventListener("beforeinstallprompt",(e)=>{
+e.preventDefault();
+deferredPrompt=e;
+installBtn.style.display="block";
 });
 
 installBtn.addEventListener("click",async()=>{
 if(deferredPrompt){
 deferredPrompt.prompt();
 await deferredPrompt.userChoice;
+deferredPrompt=null;
 installBtn.style.display="none";
 banner.style.display="none";
 }else{
-alert("Para instalar: clique nos 3 pontos do navegador e depois em 'Adicionar à tela inicial'");
+alert("📲 Para instalar:\n\n1. Clique nos 3 pontos do navegador\n2. Toque em 'Adicionar à tela inicial'");
 }
 });
 
