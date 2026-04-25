@@ -76,6 +76,7 @@ textarea{width:100%;height:120px;border-radius:10px;padding:10px;margin-bottom:1
 <button class="home-top" onclick="goHome()">🏠 Página Inicial</button>
 </header>
 
+<!-- botão flutuante -->
 <button id="installBtn" class="install-btn">📲 Instalar App</button>
 
 <div id="home" class="menu">
@@ -103,9 +104,12 @@ textarea{width:100%;height:120px;border-radius:10px;padding:10px;margin-bottom:1
 <button class="estude" onclick="openPage('estudPage')">Estude na UNILA</button>
 <button class="update" onclick="updateApp()">🔄 Atualizar App</button>
 
+<!-- NOVO BOTÃO -->
+<button class="update" onclick="instalarApp()">📲 Baixar App</button>
+
 </div>
 
-<!-- TODOS OS TEXTOS MANTIDOS (alertas, emergência, campus, RU, etc...) -->
+<!-- TODOS OS TEXTOS ORIGINAIS MANTIDOS (alertas, emergência, campus, RU, etc.) -->
 
 <script>
 let historyStack=[];
@@ -140,46 +144,36 @@ window.open("https://wa.me/?text="+encodeURIComponent(text));
 
 function updateApp(){location.reload();}
 
-/* INSTALAÇÃO MELHORADA */
+/* instalação */
 let deferredPrompt=null;
-const installBtn=document.getElementById("installBtn");
-const banner=document.getElementById("bannerInstall");
-
-function isInstalled(){
-return window.matchMedia('(display-mode: standalone)').matches;
-}
-
-/* mostrar botão depois de 3s */
-setTimeout(()=>{
-if(!isInstalled()){
-installBtn.style.display="block";
-}
-},3000);
 
 window.addEventListener("beforeinstallprompt",(e)=>{
 e.preventDefault();
 deferredPrompt=e;
-installBtn.style.display="block";
+document.getElementById("installBtn").style.display="block";
 });
 
-installBtn.addEventListener("click",async()=>{
+async function instalarApp(){
 if(deferredPrompt){
 deferredPrompt.prompt();
 await deferredPrompt.userChoice;
 deferredPrompt=null;
-installBtn.style.display="none";
-banner.style.display="none";
 }else{
-alert("📲 Para instalar:\n\n1. Clique nos 3 pontos do navegador\n2. Toque em 'Adicionar à tela inicial'");
+alert(`📲 INSTALAR APP
+
+Android:
+1. Clique nos 3 pontos do navegador
+2. "Adicionar à tela inicial"
+
+iPhone:
+1. Botão compartilhar
+2. "Adicionar à Tela de Início"
+`);
 }
-});
+}
 
-window.addEventListener("appinstalled",()=>{
-installBtn.style.display="none";
-banner.style.display="none";
-});
+document.getElementById("installBtn").onclick=instalarApp;
 
-/* SERVICE WORKER */
 if('serviceWorker' in navigator){
 navigator.serviceWorker.register('sw.js');
 }
